@@ -1,0 +1,23 @@
+#registerForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+#userNameLabel{
+    margin: 0 auto;    
+}
+
+#userNameInput{
+    background: black;
+    box-sizing: border-box;
+}
+
+#passWordInput{
+    background: black;
+    box-sizing: border-box;
+}

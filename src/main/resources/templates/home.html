@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Kosy's ToDo Application</title>
+        <link th:href="@{/css/home.css}" rel="stylesheet" type="text/css"/>
+        <script th:src="@{/js/home.js}" type="text/javascript" ></script>
+    </head>
+    <body>
+        <h1 id="welcomeMessage">Welcome to the Kosy's ToDooo Website</h1>
+
+        <p>Click <a th:href="@{/hello}">here</a> to login.</p>
+        <p>Click to register</p>
+    </body>
+</html>

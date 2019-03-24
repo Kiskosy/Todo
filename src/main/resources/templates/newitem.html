@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link th:href="@{/css/todo.css}" rel="stylesheet" type="text/css"/>
+
+    <title>To Do</title>
+</head>
+<body>
+
+        <div id="navigationBar" class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+                <div id="navigationBarContainer" class="container justify-content-center">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">My Topics</a>
+                    </div>
+                </div>
+            </div>
+    <!-- Item Input Form -->
+    <div class="todoNewItemForm">
+        <form id="todoFormContainer" class="container" role="form" th:action="@{/newitem}" th:object="${item}" method="POST">
+            <div class="form-group">
+                <label for="inputTaskItem" class="control-label">New Item</label>
+                <input type="text" th:field="*{issue}" class="form-control" id="inputItemIssue" placeholder="Enter Issue"/>
+                <input type="text" th:field="*{name}" class="form-control" id="inputItemName" placeholder="Enter Item Name"/>
+                <input type="text" th:field="*{description}" class="form-control" id="inputItemDescription" placeholder="Enter description"/>
+            </div>
+
+            <input type="submit" id="newItemBTN" class="btn btn-primary" value="Create" name="Create"/>
+        </form>
+    </div>
+    
+
+</body>
+</html>

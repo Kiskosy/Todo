@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+    <link th:href="@{/css/todo.css}" rel="stylesheet" type="text/css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    
+    <title>To Do</title>
+</head>
+<body>
+
+    <div id="navigationBar" class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+        <div id="navigationBarContainer" class="container justify-content-center">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/todo}">My Topics</a>
+                <a class="navbar-brand" th:href="@{/newissue}">New Topic</a>
+                <a class="navbar-brand" th:href="@{/newitem}">New Item</a>
+                <a class="navbar-brand" href="#">My account</a>
+                <a class="navbar-brand" th:href="@{/login}">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Item Input Form -->
+    <div class="todoForm container">
+        <div class="col-12">
+            <table class="table table-hover">
+                <tr class="row" th:each="issue: ${issues}">
+                    <td class="col-11" th:text="${issue.name}"></td>
+                    <!--<td class="col-2">
+                        <button type="button" th:href="@{/newitem}" class="new-task btn btn-default btn-sm">
+                            <span>Add task</span>
+                        </button>
+                        <a class="new-task btn btn-default btn-sm" th:object="${issue.name}" th:href="@{/newitem}">New Task</a>
+                    </td>-->
+                    <td class="col-1">
+                        <button type="button" class="plus-sign btn btn-default btn-sm" >
+                            <span class="fas fa-plus"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    $(document).ready(function(){
+
+        $(".plus-sign").on("click", function(event){
+            let clickedElement;
+            if(event.target.tagName === 'SPAN'){
+                clickedElement = event.target.parentElement.parentElement.parentElement;
+            } else {
+                clickedElement = event.target.parentElement.parentElement;
+            }
+            
+            if(!(document.getElementById('items'))){
+            
+            let items = /*[[${items}]]*/{};
+            let issues = /*[[${issues}]]*/{};
+            let html = '';
+            let template = document.createElement('template');
+
+            //console.log(temp);
+            html += '<div id="items"><table>';
+            for (let i = 0; i < items.length; i++){
+                //console.log(items[i].issue , " , " , items[i].name , " , " , items[i].description);
+
+                let clickedIssueName = clickedElement.innerText;
+                if(clickedIssueName === items[i].issue){
+                    html += '<tr id="item">'
+                            + '<td>' 
+                            + items[i].name 
+                            + ' : '
+                            + items[i].description
+                            + '</td>'
+                            + '</tr>';
+                            
+                }
+            }
+
+            html += "</table></div>";
+            template.innerHTML = html;
+            clickedElement.parentNode.insertBefore(template.content,clickedElement.nextSibling);
+
+            }
+            else {
+                $('#items').remove();
+            }
+        });
+
+    });
+
+    /*]]>*/
+    </script>
+
+</body>
+</html>
