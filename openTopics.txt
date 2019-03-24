@@ -1,0 +1,4 @@
+handle duplicate error message on Register.
+handle error message if account does not exists.
+only open Topics which is made by the User, not select all.
+security.
